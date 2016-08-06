@@ -2,6 +2,7 @@
 alias etc="cd /c/Windows/System32/drivers/etc/"
 alias bin="cd /c/bin/"
 
+alias ..="cd .."
 
 alias cc="clear"
 alias lsl="ls -l"

@@ -3,11 +3,13 @@
 # settings and dispatch any service you may wish to use.
 #
 
-shellPath=~/Code/shell/
-shellName="\n $BYellow \bR5 $BWhite \b\\ Shell$Color_Off"
+SHELL_PATH=~/Code/shell # Your shell path.
+SHELL_NAME="R5" # Your shell name.
+SHELL_OS="windows" # windows, mac, linux
+SHELL_THEME="default" # Theme selection is dependant on OS (themes/SHELL_OS/)
+SHELL_EDITOR="vim" # Your default editor.
 
-source $shellPath/colors.sh
-source $shellPath/binds.sh
-source $shellPath/boot.sh
+SHELL_ASSETS=$SHELL_PATH/themes/$SHELL_OS/assets
 
-
+source $SHELL_PATH/binds.sh
+source $SHELL_PATH/boot.sh

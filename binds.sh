@@ -5,6 +5,6 @@
 # and allows to define settings for each of them.
 #
 
-for file in $shellPath/binds/*.sh; do
+for file in $SHELL_PATH/binds/*.sh; do
     source $file
 done

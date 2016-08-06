@@ -26,6 +26,37 @@ function gacp() {
     ( git add --all :/ && git commit -m "$1" && git push origin master )
 }
 
+# Clones a git repository.
+# Example: clone -service user/repository
+# clone g oxyzero/shell
+# By default, it points to GitHub.
+function clone() {
+    if [ "$#" -lt 2 ]; then
+        echo -e " Illegal number of arguments.\n"
+    fi
+
+    provider=$1
+    shift
+
+    if [ "$provider" == "g" ] || [ "$provider" == "github" ]; then
+        repository=$1
+        shift
+        (git clone http://github.com/$repository.git $*)
+        return
+    fi
+
+    if [ "$provider" == "b" ] || [ "$provider" == "bitbucket" ]; then
+        repository=$1
+        shift
+        (git clone http://bitbucket.com/$repository.git $*)
+        return
+    fi
+
+    # The provider wasn't defined, therefore a repository was passed as the
+    # first argument. So we'll just point it to GitHub.
+    (git clone http://github.com/$provider.git $*)
+}
+
 # Shows the total number of commits of the repository including
 # the total number of commits of each contributor.
 function commits() {
