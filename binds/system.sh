@@ -1,16 +1,17 @@
-# Windows
-alias etc="cd /c/Windows/System32/drivers/etc/"
-alias bin="cd /c/bin/"
-
 alias ..="cd .."
 
 alias cc="clear"
-alias lsl="ls -l"
-alias lsa="ls -a"
-alias lsla="ls -la"
 alias ll="ls -l"
 alias la="ls -la"
 alias l="ls"
+
+#
+# Execute in "sudo" mode.
+# Example: . apt-get install
+#
+function s() {
+    (sudo $*)
+}
 
 # Creates a directory, and changes into it.
 function cmkdir () {
@@ -47,7 +48,21 @@ function wcg() {
     fi
 }
 
-# Make a directory.
+#
+# Create a directory.
+#
 function md() {
     mkdir "$1" && clear
+}
+
+#
+# Easily edit your etc/hosts file.
+#
+function hosts() {
+    if [ "$SHELL_OS" == "windows" ]; then
+        ($SHELL_EDITOR "/c/Windows/System32/drivers/etc/hosts")
+        return
+    fi
+
+    ($SHELL_EDITOR "/etc/hosts")
 }
