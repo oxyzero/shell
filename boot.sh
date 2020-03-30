@@ -1,8 +1,18 @@
+#!/bin/bash
 
 #
-# This file handles the boot of the initial screen of the shell.
+# The path that leads to your shell.
 #
+AIR_PATH=$HOME/.air
 
-if [ "$SHELL_THEME" != "none" ]; then
-    source $SHELL_PATH/themes/$SHELL_OS/$SHELL_THEME.sh
-fi
+#
+# Load the local configuration.
+#
+source $AIR_PATH/config.sh
+
+#
+# Apply all of profile bindings.
+#
+for file in $AIR_PATH/profiles/$AIR_PROFILE/bindings/*.sh; do
+    source $file
+done
